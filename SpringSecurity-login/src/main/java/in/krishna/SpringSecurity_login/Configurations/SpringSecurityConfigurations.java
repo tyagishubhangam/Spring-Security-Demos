@@ -49,10 +49,11 @@ public class SpringSecurityConfigurations{
                                         .hasRole("ADMIN")
                                         .requestMatchers("/anonymous/*").anonymous()
                                         .requestMatchers("/login").permitAll()
+                                        .requestMatchers("/home").permitAll()
                                         .anyRequest().authenticated()
                         ).formLogin((formLogin)-> formLogin.loginPage("/login")
                         .loginProcessingUrl("/perform_login")
-                .defaultSuccessUrl("/home",true)
+                .defaultSuccessUrl("/profile",true)
                         .failureUrl("/login?error=true")
                 ).httpBasic(Customizer.withDefaults());
 
